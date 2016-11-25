@@ -25,7 +25,7 @@ gulp.task('default', ['styles', 'scripts', 'vendor-scripts', 'html', 'json', 'im
 });
 
 gulp.task('styles', function() {
-  gulp.src(['bower_components/normalize-css/normalize.css', 'assets/styles/**/*.less'])
+  gulp.src(['bower_components/normalize-css/normalize.css', 'assets/styles/main.less'])
     .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(concat('main.css'))
