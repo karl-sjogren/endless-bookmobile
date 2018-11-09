@@ -40,7 +40,7 @@ export default class Game {
       }
     } else {
       // We are in game over
-      if(this.scene.controller.space || this.scene.controller.enter) {
+      if(this.scene.controller.keys.space || this.scene.controller.keys.enter) {
         this.scene.reset();
         this.setupScene();
       }

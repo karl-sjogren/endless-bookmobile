@@ -11,11 +11,11 @@ export default class EntitySpawner extends ObjectBase {
 
   update(frameDelta, frameTime) {
     if(!this.nextSpawn) {
-      this.nextSpawn = frameTime + 2000;
+      this.nextSpawn = frameTime + 1000;
     }
 
     if(this.nextSpawn <= frameTime) {
-      this.nextSpawn = frameTime + 2000;
+      this.nextSpawn = frameTime + 1000;
       
       if(Math.random() > .3) {
         this.spawnGoodie();

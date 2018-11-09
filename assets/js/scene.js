@@ -40,6 +40,9 @@ export default class Scene {
     this._objects = [];
     this._gameOver = false;
     this._score = 0;
+
+    let children = [...this.gameContainer.children];
+    children.forEach(element => this.gameContainer.removeChild(element));
   }
 
   setGameOver() {

@@ -56,10 +56,10 @@ export default class Controller {
           this._keys.right = false;
           break;
         case VK_ENTER:
-          this._keys.enter = true;
+          this._keys.enter = false;
           break;
         case VK_SPACE:
-          this._keys.space = true;
+          this._keys.space = false;
           break;
       }
     });

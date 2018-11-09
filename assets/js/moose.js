@@ -36,8 +36,10 @@ export default class Moose extends Collidable {
     const roadPadding = 60;
     if(this.x > this.scene.width - this.width - roadPadding) {
       this.x = this.scene.width - this.width - roadPadding;
+      this.movingLeft = true;
     } else if(this.x <= roadPadding) {
       this.x = roadPadding;
+      this.movingLeft = false;
     }
 
     if(this.y > this.scene.height) {
