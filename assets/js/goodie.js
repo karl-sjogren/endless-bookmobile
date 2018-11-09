@@ -34,7 +34,7 @@ export default class Goodie extends Collidable {
   collide() {
     if(this.isAlive) {
       this.scene.addScore(1000);
-      this.particleCannon.fire(this.x + this.width / 2, this.y + this.width / 2, 100);
+      this.particleCannon.fire(this.x + this.width / 2, this.y + this.width / 2, 40);
     }
 
     this._isAlive = false;

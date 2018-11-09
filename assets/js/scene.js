@@ -41,6 +41,8 @@ export default class Scene {
     this._gameOver = false;
     this._score = 0;
 
+    this.gameContainer.classList.remove('game-over');
+
     let children = [...this.gameContainer.children];
     children.forEach(element => this.gameContainer.removeChild(element));
   }
@@ -48,6 +50,7 @@ export default class Scene {
   setGameOver() {
     this._gameOver = true;
     this.addObject(new GameOverSign(this));
+    this.gameContainer.classList.add('game-over');
   }
 
   createDOMElement(className) {
