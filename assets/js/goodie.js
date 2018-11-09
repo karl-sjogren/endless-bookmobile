@@ -1,4 +1,5 @@
 import Collidable from 'collidable';
+import ParticleCannon from 'particle-cannon';
 
 export default class Goodie extends Collidable {
   constructor(scene, x, y) {
@@ -11,6 +12,7 @@ export default class Goodie extends Collidable {
     this.element = scene.createDOMElement('goodie');
     this.element.style.width = this.width + 'px';
     this.element.style.height = this.height + 'px';
+    this.particleCannon = new ParticleCannon(scene);
   }
 
   update(frameDelta) {
@@ -32,7 +34,9 @@ export default class Goodie extends Collidable {
   collide() {
     if(this.isAlive) {
       this.scene.addScore(1000);
+      this.particleCannon.fire(this.x + this.width / 2, this.y + this.width / 2, 100);
     }
+
     this._isAlive = false;
     this.scene.removeDOMElement(this.element);
   }
