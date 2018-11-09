@@ -19,7 +19,7 @@ gulp.task('default', ['styles', 'scripts', 'vendor-scripts', 'html', 'json', 'im
   gulp.watch('assets/styles/**/*.less', ['styles']);
   gulp.watch('assets/js/**/*.js', ['scripts']);
   gulp.watch('assets/**/*.html', ['html']);
-  gulp.watch('assets/**/*.jpg', ['images']);
+  gulp.watch('assets/**/*.{jpg,png}', ['images']);
 
   startExpress();
 });
@@ -52,7 +52,10 @@ gulp.task('scripts', function () {
     .pipe(babel({
       modules: 'amd',
       moduleIds: true
-    }))
+    })).on('error', function(e) {
+      console.error('>>> ERROR', e);
+      this.emit('end');
+    })
     .pipe(concat('app.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
@@ -73,7 +76,7 @@ gulp.task('json', function () {
 });
 
 gulp.task('images', function () {
-  return gulp.src('assets/**/*.jpg')
+  return gulp.src('assets/**/*.{jpg,png}')
     .pipe(gulp.dest('wwwroot/'))
     .pipe(livereload());
 });

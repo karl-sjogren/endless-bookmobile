@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+.game-container {
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+}
+.score {
+    position: absolute;
+    text-align: right;
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    color: white;
+}
+.fps-counter {
+    position: absolute;
+    text-align: right;
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    color: lawngreen;
+}
+.moose {
+    position: absolute;
+    background-image: url("/images/moose.png");
+}
+.goodie {
+    position: absolute;
+    background-image: url("/images/goodie.png");
+}
+.lorry {
+    position: absolute;
+    background-image: url("/images/bus.png");
+}
+.game-over-sign {
+    position: absolute;
+    z-index: 2;
+    top: 40%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 80px;
+    width: 100%;
+    text-align: center;
+}

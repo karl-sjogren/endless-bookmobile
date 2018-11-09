@@ -1,0 +1,10 @@
+{
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[less]": {
+        "editor.tabSize": 2
+    },
+    "eslint.packageManager": "yarn",
+    "eslint.enable": true
+}
