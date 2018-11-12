@@ -30,6 +30,3 @@ node_modules/
 
 # Misc crap
 .DS_Store
-
-# Transpiled files and stuff
-wwwroot/
