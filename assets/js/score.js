@@ -18,6 +18,6 @@ export default class Score extends ObjectBase {
   }
 
   draw() {
-    this.element.textContent = this.scene.score;
+    this.element.textContent = this.scene.score.toLocaleString();
   }
 }
