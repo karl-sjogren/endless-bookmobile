@@ -32,7 +32,7 @@ export default class Scene {
 
   addScore(score) {
     this._score += score;
-    if(this._score % 1000 === 0) {
+    if(this._score % 5000 === 0) {
       this.difficultyManager.increaseDifficulty();
     }
   }
