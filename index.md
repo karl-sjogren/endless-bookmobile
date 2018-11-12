@@ -1,1 +1,1 @@
-<iframe style="width: 100%; height: 100vh;" src="https://karl-sjogren.com/endless-bookmobile/wwwroot/index.html"></iframe>
+<iframe style="width: 100%; height: calc(100vh - 200px); border: 0;" src="https://karl-sjogren.com/endless-bookmobile/wwwroot/index.html"></iframe>
