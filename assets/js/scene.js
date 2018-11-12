@@ -45,6 +45,7 @@ export default class Scene {
     this._objects = [];
     this._gameOver = false;
     this._score = 0;
+    this.difficultyManager.reset();
 
     this.gameContainer.classList.remove('game-over');
 

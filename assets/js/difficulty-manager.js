@@ -9,6 +9,10 @@ export default class DifficultyManager {
     }
   }
 
+  reset() {
+    this.difficulty = 1;
+  }
+
   get spawnSpeedMultiplier() {
     return Math.log10(this.difficulty);
   }
