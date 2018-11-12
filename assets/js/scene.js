@@ -1,15 +1,17 @@
 import Controller from 'controller';
 import GameOverSign from 'game-over-sign';
+import DifficultyManager from 'difficulty-manager';
 
 export default class Scene {
   constructor(gameContainer) {
     this.gameContainer = gameContainer;
-    this.width = 800;
-    this.height = 600;
+    this.width = gameContainer.clientWidth;
+    this.height = gameContainer.clientHeight;
     this._score = 0;
     this._objects = [];
     this._gameOver = false;
     this._controller = new Controller();
+    this.difficultyManager = new DifficultyManager()
   }
 
   get objects() {
@@ -30,6 +32,9 @@ export default class Scene {
 
   addScore(score) {
     this._score += score;
+    if(this._score % 1000 === 0) {
+      this.difficultyManager.increaseDifficulty();
+    }
   }
 
   addObject(obj) {

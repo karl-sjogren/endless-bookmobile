@@ -16,17 +16,19 @@ export default class Lorry extends ObjectBase {
   }
 
   update(frameDelta) {
+    let difficultyMultiplier = this.scene.difficultyManager.lorrySpeedMultiplier;
+
     let controller = this.scene.controller;
     if(controller.keys.left) {
-      this.x -= .5 * frameDelta;
+      this.x -= .5 * frameDelta * difficultyMultiplier;
     } else if(controller.keys.right) {
-      this.x += .5 * frameDelta;
+      this.x += .5 * frameDelta * difficultyMultiplier;
     }
 
     if(controller.keys.up) {
-      this.y -= .3 * frameDelta;
+      this.y -= .3 * frameDelta * difficultyMultiplier;
     } else if(controller.keys.down) {
-      this.y += .9 * frameDelta;
+      this.y += .5 * frameDelta * difficultyMultiplier;
     }
 
     const roadPadding = 60;

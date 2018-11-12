@@ -10,12 +10,13 @@ export default class EntitySpawner extends ObjectBase {
   }
 
   update(frameDelta, frameTime) {
+    let difficultyMultiplier = this.scene.difficultyManager.spawnSpeedMultiplier;
     if(!this.nextSpawn) {
-      this.nextSpawn = frameTime + 400;
+      this.nextSpawn = frameTime + (400 - (200 * difficultyMultiplier));
     }
 
     if(this.nextSpawn <= frameTime) {
-      this.nextSpawn = frameTime + 400;
+      this.nextSpawn = frameTime + (400 - (200 * difficultyMultiplier));
       
       if(Math.random() > .3) {
         this.spawnGoodie();
