@@ -378,18 +378,18 @@ th {
 }
 .moose {
   position: absolute;
-  background-image: url("/images/moose.png");
+  background-image: url("images/moose.png");
 }
 .goodie {
   position: absolute;
-  background-image: url("/images/goodie.png");
+  background-image: url("images/goodie.png");
 }
 .lorry {
   position: absolute;
-  background-image: url("/images/bus.png");
+  background-image: url("images/bus.png");
 }
 .game-over .lorry {
-  background-image: url("/images/bus_crashed.png");
+  background-image: url("images/bus_crashed.png");
 }
 .particle {
   position: absolute;

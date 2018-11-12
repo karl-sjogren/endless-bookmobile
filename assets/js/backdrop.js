@@ -8,7 +8,7 @@ export default class Backdrop extends ObjectBase {
     this.element = scene.createDOMElement('backdrop');
     this.element.style.width = scene.width + 'px';
     this.element.style.height = scene.height + 'px';
-    this.element.style.backgroundImage = 'url("/images/backdrop.jpg")';
+    this.element.style.backgroundImage = 'url("images/backdrop.jpg")';
   }
 
   update(frameDelta) {
