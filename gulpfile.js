@@ -8,7 +8,6 @@ const livereload = require('gulp-livereload');
 const express = require('express');
 
 const less = require('./tasks/less-task');
-console.log(less);
 
 function startExpress() {
   var app = express();
