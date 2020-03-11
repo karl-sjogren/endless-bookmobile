@@ -1,12 +1,14 @@
 /* global require, __dirname */
-var gulp = require('gulp'),
-    less = require('gulp-less'),
-    livereload = require('gulp-livereload'),
-    express = require('express'),
-    concat = require('gulp-concat'),
-    babel = require('gulp-babel'),
-    sourcemaps = require('gulp-sourcemaps'),
-    uglify = require('gulp-uglify');
+const { src, dest, series, parallel, watch } = require('gulp');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const livereload = require('gulp-livereload');
+const express = require('express');
+
+const less = require('./tasks/less-task');
+console.log(less);
 
 function startExpress() {
   var app = express();
@@ -14,40 +16,44 @@ function startExpress() {
   app.listen(4000);
 }
 
-gulp.task('default', ['styles', 'scripts', 'vendor-scripts', 'html', 'json', 'images', 'videos'], function() {
-  livereload.listen();
-  gulp.watch('assets/styles/**/*.less', ['styles']);
-  gulp.watch('assets/js/**/*.js', ['scripts']);
-  gulp.watch('assets/**/*.html', ['html']);
-  gulp.watch('assets/**/*.{jpg,png}', ['images']);
+exports.default = 
+  series(
+    parallel(stylesTask, scriptsTask, vendorScriptsTask, htmlTask, jsonTask, imagesTask, videosTask),
+    watchTask
+  );
+
+function watchTask(cb) {
+  watch('assets/styles/**/*.less', stylesTask);
+  watch('assets/js/**/*.js', scriptsTask);
+  watch('assets/**/*.html', htmlTask);
+  watch('assets/**/*.{jpg,png}', imagesTask);
 
   startExpress();
-});
+  livereload.listen();
+}
 
-gulp.task('styles', function() {
-  gulp.src(['bower_components/normalize-css/normalize.css', 'assets/styles/main.less'])
+function stylesTask() {
+  return src(['node_modules/normalize-css/normalize.css', 'assets/styles/main.less'])
     .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(concat('main.css'))
-    .pipe(gulp.dest('wwwroot'))
+    .pipe(dest('wwwroot'))
     .pipe(sourcemaps.write('.'))
     .pipe(livereload());
-});
+}
 
-gulp.task('vendor-scripts', function () {
-  return gulp.src([
-      'bower_components/almond/almond.js'
-    ])
+function vendorScriptsTask() {
+  return src(['node_modules/almond/almond.js'])
     .pipe(sourcemaps.init())
     .pipe(concat('vendor.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('wwwroot'))
+    .pipe(dest('wwwroot'))
     .pipe(sourcemaps.write('.'))
     .pipe(livereload());
-});
+}
 
-gulp.task('scripts', function () {
-  return gulp.src('assets/js/**/*.js')
+function scriptsTask() {
+  return src('assets/js/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(babel({
       modules: 'amd',
@@ -59,30 +65,30 @@ gulp.task('scripts', function () {
     .pipe(concat('app.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('wwwroot'))
+    .pipe(dest('wwwroot'))
     .pipe(livereload());
-});
+}
 
-gulp.task('html', function () {
-  return gulp.src('assets/**/*.html')
-    .pipe(gulp.dest('wwwroot'))
+function htmlTask() {
+  return src('assets/**/*.html')
+    .pipe(dest('wwwroot'))
     .pipe(livereload());
-});
+}
 
-gulp.task('json', function () {
-  return gulp.src('assets/**/*.json')
-    .pipe(gulp.dest('wwwroot'))
-    .pipe(livereload());
-});
+function jsonTask() {
+  return src('assets/**/*.json')
+    .pipe(dest('wwwroot'))
+    //pipe(livereload());
+}
 
-gulp.task('images', function () {
-  return gulp.src('assets/**/*.{jpg,png}')
-    .pipe(gulp.dest('wwwroot/'))
+function imagesTask() {
+  return src('assets/**/*.{jpg,png}')
+    .pipe(dest('wwwroot/'))
     .pipe(livereload());
-});
+}
 
-gulp.task('videos', function () {
-  return gulp.src('assets/video/*.*')
-    .pipe(gulp.dest('wwwroot/video'))
+function videosTask() {
+  return src('assets/video/*.*')
+    .pipe(dest('wwwroot/video'))
     .pipe(livereload());
-});
+}
