@@ -30,3 +30,6 @@ node_modules/
 
 # Misc crap
 .DS_Store
+
+# Webpack stuff
+dist/

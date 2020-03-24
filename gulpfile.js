@@ -17,7 +17,7 @@ function startExpress() {
 
 exports.default = 
   series(
-    parallel(stylesTask, scriptsTask, vendorScriptsTask, htmlTask, jsonTask, imagesTask, videosTask),
+    parallel(stylesTask, scriptsTask, vendorScriptsTask, htmlTask, imagesTask),
     watchTask
   );
 
@@ -32,7 +32,7 @@ function watchTask(cb) {
 }
 
 function stylesTask() {
-  return src(['node_modules/normalize-css/normalize.css', 'assets/styles/main.less'])
+  return src(['assets/styles/main.less'])
     .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(concat('main.css'))
@@ -74,20 +74,8 @@ function htmlTask() {
     .pipe(livereload());
 }
 
-function jsonTask() {
-  return src('assets/**/*.json')
-    .pipe(dest('wwwroot'))
-    //pipe(livereload());
-}
-
 function imagesTask() {
   return src('assets/**/*.{jpg,png}')
     .pipe(dest('wwwroot/'))
-    .pipe(livereload());
-}
-
-function videosTask() {
-  return src('assets/video/*.*')
-    .pipe(dest('wwwroot/video'))
     .pipe(livereload());
 }
