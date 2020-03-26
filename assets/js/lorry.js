@@ -6,10 +6,10 @@ export default class Lorry extends ObjectBase {
   constructor(scene) {
     super();
     this.scene = scene;
-    this.x = scene.width / 2;
+    this.x = scene.width / 2; 
     this.y = scene.height - 200;
-    this.width = 65;
-    this.height = 150;
+    this.width = 48;
+    this.height = 130;
     this.element = scene.createDOMElement('lorry');
     this.element.style.width = this.width + 'px';
     this.element.style.height = this.height + 'px';

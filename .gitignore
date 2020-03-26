@@ -30,6 +30,7 @@ node_modules/
 
 # Misc crap
 .DS_Store
+package-lock.json
 
 # Webpack stuff
 dist/

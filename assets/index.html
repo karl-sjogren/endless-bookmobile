@@ -15,5 +15,11 @@
     <script src="vendor.js"></script>
     <script src="app.js"></script>
     <script>require(['app'],function(app){app();});</script>
+    <script id="livereload-script">
+      var self = document.getElementById('livereload-script');
+      var script = document.createElement('script');
+      script.setAttribute('src', 'http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1');
+      self.parentNode.appendChild(script);
+    </script>
   </body>
 </html>
