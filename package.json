@@ -19,7 +19,7 @@
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "express": "^4.13.3",
+    "express": "^4.17.3",
     "file-loader": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^5.2.1",
